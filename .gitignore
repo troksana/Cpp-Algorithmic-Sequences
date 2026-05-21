@@ -1,0 +1,8 @@
+build/
+.CMake/
+out/
+
+*.exe
+*.sublime-project
+
+cmake-kits.json
