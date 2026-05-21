@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.10)
+project(SequenceProject CXX)
+
+# Ustawia standard C++ na 17 (wymagany dla nowoczesnego C++ i szablonów)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Dodaje katalog źródłowy do ścieżki include (obecny katalog)
+# Zapewnia to, że #include "sequence.hpp" i #include "split.hpp" działają
+target_include_directories(SequenceProject PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Definiuje wykonywalny cel 'SequenceProject'
+# Projekt jest oparty na pliku main.cpp
+add_executable(SequenceProject main.cpp)
+
+# Opcjonalnie: Użyj linkera i opcji kompilatora do debugowania
+# Opcje to m.in. -Wall -Wextra, które włączają więcej ostrzeżeń kompilatora
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_options(SequenceProject PRIVATE -Wall -Wextra)
+    target_link_options(SequenceProject PRIVATE -g)
+endif()
